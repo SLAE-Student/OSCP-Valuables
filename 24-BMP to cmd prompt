@@ -1,0 +1,19 @@
+Gain Command Prompt Access via MsPaint
+This isn’t about a vulnerability flaw in Microsoft’s Paint program, though it could lead to a potential security flaw in a poorly implemented security schemes. In this blog post I will use the program, mspaint, to access a command prompt.
+First step is to open mspaint and create a canvas for 6 by 1.
+ 
+
+Now using the custom RGB ability feature in paint create the custom colour for each pixel.
+Pixel 1 = R(10), G(0), B(0)
+Pixel 2 = R(13), G(10), B(13)
+Pixel 3 = R(100), G(109), B(99)
+Pixel 4 = R(120), G(101), B(46)
+Pixel 5 = R(0), G(0), B(101)
+Pixel 6 = R(0), G(0), B(0)
+
+Now save the document as a 24-bmp file and then once saved browse to the location in the file system for where the document was saved and change the file type from .bmp to a .bat file. Once the change to the file type has been made, you can either run the batch file which will open a command prompt for you. But before I open run the batch file, I will open the file in a hex editor.
+
+From the hexeditor you can see that in the ASCII section of hex editor output contains a cmd.exe, the values of the colours that were created in hex equal cmd.exe, which is the reason why when the batch file is run will grant you a command prompt for the local computer.
+
+Edit:
+The original source came from a Hak5 episode.
